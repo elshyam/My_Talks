@@ -1,0 +1,417 @@
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+\documentclass{beamer}
+
+% There are many different themes available for Beamer. A comprehensive
+% list with examples is given here:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+% You can uncomment the themes below if you would like to use a different
+% one:
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{boxes}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{default}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+\title{Linux File Operations and CLI }
+
+%\pgfdeclareimage[height=2.3cm]{cerc-logo}{cerc.png}
+\pgfdeclareimage[height=1.5cm]{university-logo}{logo.jpg}
+% A subtitle is optional and this may be deleted
+%\subtitle{emacs vs vim}
+
+\author{Shyam Saini aka mysticTot } 
+
+\institute[ASET] % (optional, but mostly needed)
+{
+  Amity School of Engineering and Technology -- {\em (ASET)} \\
+  Department of Computer Science\\
+  Amity University
+  \center
+}
+
+\date{ILUG-D \& LinuxChix 2016}
+
+\subject{Linux File Operations}
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+\logo{\pgfuseimage{university-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSubsection[]
+{
+	\begin{frame}<beamer>{Agenda}
+		\tableofcontents[currentsection,currentsubsection]
+	\end{frame}
+}
+
+% Let's get started
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}{Agenda}
+	\tableofcontents
+	% You might wish to add the option [pausesections]
+\end{frame}
+
+% Section and subsections will appear in the presentation overview
+% and table of contents.
+\section{Linux File Operations}
+
+\subsection{Files Types in Linux}
+
+\begin{frame}{everything is a \textbf{file*}} {File Types in Linux}
+%	\textbf{File Types in Linux}\\ 
+	{
+	\begin{itemize}
+	
+
+    \item {
+				\textbf{Regular file(-)}
+		}
+		\end{itemize}
+		
+    \begin{itemize}
+    
+	\item{
+				\textbf{Directory files(d)}
+		}
+	\end{itemize}
+	
+	\begin{itemize}
+	\item{
+                \textbf{Special files}
+                
+                \begin{itemize}
+		        \item {
+				\textbf{Block file(b)}: eg: /dev/sda*, /dev/sdb* files
+				\pause
+				}
+	
+				\item {
+				\textbf{Character device file(c)}: eg: /dev/tty* files 
+				\pause
+				}
+				
+				\item {
+				\textbf{Named pipe file or just a pipe file(p)}
+				\pause
+				}
+				
+				\item {
+				\textbf{Symbolic link file(l)}
+				\pause
+				}
+				
+				\item {
+				\textbf{Socket file(s)}: eg: /var/run/cups/cups.sock
+				}
+				
+				\end{itemize}
+                
+                
+                
+                
+                        
+            }
+    \end{itemize}
+    }
+    
+    \end{frame}
+    
+    \begin{frame}{everything is a \textbf{file*}}
+        \begin{center}
+	    \huge{We will focus on Regular files and Directory files}
+	    \end{center}
+	\end{frame}
+   
+
+\subsection{File Operations}
+
+% You can reveal the parts of a slide one at a time
+% with the \pause command:
+\begin{frame}{File operations}{ on Regular files}
+
+
+	\begin{itemize}
+		\item {
+				\textbf{touch}: change file timestamps
+				\pause
+				}
+			\item {   
+				\textbf{cat}: concatenate files and print on the standard output
+				\pause
+			}
+			% You can also specify when the content should appear
+			% by using <n->:
+			%  \item<3-> {
+		\item {
+				\textbf{cp}: copy files and directories
+				\pause
+			}
+	
+		\item{
+		        \textbf{rm}: remove files or directories
+                \pause
+		  }
+		  
+		  \item{
+		        \textbf{more}: file perusal filter for crt viewing  
+		        \pause
+		  }
+		  
+		   \item{
+		        \textbf{file}: determine file type
+		        \pause
+		  } 
+		  
+		  \item{
+		        \textbf{find}: search for files in a directory hierarchy 
+		        \pause
+		  } 
+		  
+		  \item{
+		        \textbf{diff}: compare files line by line 
+	            \pause
+		  } 
+		  
+		  \item{
+		        \textbf{grep}: print lines matching a pattern  
+		        \pause
+		  }
+		  
+	%	  \item{
+	%	        \textbf{}:  
+	%	  } 
+	%	  
+	%	  \item{
+	%	        \textbf{}:  
+	%	  } \item{
+	%	        \textbf{}:  
+	%	  } \item{
+	%	        \textbf{}:  
+	%	  }
+		  
+	\end{itemize}
+    \end{frame}
+    
+    
+    \begin{frame}{File operations} {on Directories  or Directory file type}
+    
+
+	\begin{itemize}
+	
+	 \item{
+		        \textbf{mkdir}: make directories  
+		        \pause
+		  }
+	
+	\item{
+		        \textbf{rmdir}: remove empty directories  
+		        \pause
+		  }
+	\item{
+		        \textbf{cd}: change directories
+		        \pause
+		  }
+	
+	\item{
+		        \textbf{rm}: with -r flags it deletes directory   
+		        \pause
+		  }
+	\item{
+		        \textbf{cp}: with -r flags it copies the directory content	\pause
+		  }
+	\item{
+		        \textbf{ls}: list files in directory
+		        \pause
+		  }	  
+	\item{
+		        \textbf{pwd}: print name of current/working directory
+		  }
+		  
+		  
+	
+	\end{itemize}
+	
+\end{frame}
+
+\subsection{File Permissions}
+
+	\begin{figure}[htp]
+    \centering
+    \includegraphics[width=9cm, height=9cm]{hulk-vs-Linux.png}
+    %\caption{Even Hulk is Denied, if not have permissions}
+    %\label{fig:lion}
+    \end{figure}
+    
+\begin{frame}{File Permissions}
+	\textbf{Permission Groups}
+
+	
+	\begin{itemize}
+
+			\item {
+					\textbf{user (u)}: apply only the owner of the file or directory
+					\pause
+					}
+			\item {
+					\textbf{group (g)}: apply only to the group that has been assigned to the file or directory
+					\pause
+					}
+			\item {
+					\textbf{all users (a or o) }:  apply to all other users on the system
+					\pause
+			}
+
+	\end{itemize}
+	
+    Permissions Types
+	\begin{itemize}
+
+	    \item {
+	        \textbf{read (r or 4)}: assign read permissions
+	        \pause
+	        }
+	    
+	    \item {
+	        \textbf{write (w or 2)}: assign write permissions
+	        \pause
+	        }
+	        
+	   \item {
+	        \textbf{execute (x or 1 )}: assign execute permissions
+	        \pause
+	        }
+	        
+	\end{itemize}
+	
+\end{frame}
+\begin{frame}{File Permissions Commands}
+    
+	\alert{ Protect Files from Hulk} 
+	
+	\begin{itemize}
+	
+	    	\item {
+				\textbf{chown}: change file owner and group
+				\pause
+				}
+				
+		\item {
+				\textbf{chmod}: change file mode bits
+				\pause
+				}
+	
+	
+	\end{itemize}
+	
+\end{frame}
+
+\section{OFF Topic!}
+
+
+\subsection{A Cool Tool to make everyone happy!}
+\begin{frame}
+\begin{center}
+\huge Kexec
+\end{center}
+
+\end{frame}
+
+
+    
+
+    
+    \begin{center}
+    \includegraphics[width=5cm]{smily.jpeg}
+    %\caption{I wonder, How does it works}
+    \end{center}
+   
+
+
+
+\begin{frame}{ Kexec } {analogous to \textbf{exec} command}    
+	\textbf{directly boot into a new kernel }
+	\pause
+	\begin{itemize}
+		\item {
+			\textbf{kexec -l}: Load the specified kernel into the current kernel
+			\pause
+			}
+
+		\item {   
+			\textbf{kexec -e}: Run the currently loaded kernel
+
+			}
+
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\begin{center}
+	\huge{\alert{It seems my system is freezed, But Wait!} }
+\end{center}
+\end{frame}	
+
+\begin{frame}
+	\begin{figure}[htp]
+    \centering
+    \includegraphics[width=1cm]{happ.jpeg}
+    %\caption{Me thinks, How does it works}
+    % \label{fig:lion}
+    \end{figure}
+	\textbf{Aha!, we have booted into new kernel on the fly}
+
+\end{frame}
+
+\begin{frame}{Thats all!}
+\begin{center}
+\Huge Thank You and Happy Hacking!
+\end{center}
+	
+\end{frame}
+
+\end{document}
+
+
